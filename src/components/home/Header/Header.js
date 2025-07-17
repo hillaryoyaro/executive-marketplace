@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef,useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { MdClose } from "react-icons/md";
 import { HiMenuAlt2 } from "react-icons/hi";
+import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { logo, logoLight } from "../../../assets/images";
 import Image from "../../designLayouts/Image";
@@ -9,6 +10,9 @@ import { navBarList } from "../../../constants";
 import Flex from "../../designLayouts/Flex";
 
 const Header = () => {
+  const [show, setShow] = useState(false);
+  const [showUser, setShowUser] = useState(false);
+  const ref = useRef();
   const [showMenu, setShowMenu] = useState(true);
   const [sidenav, setSidenav] = useState(false);
   const [category, setCategory] = useState(false);
@@ -27,14 +31,45 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full h-20 bg-[#0051dd] sticky top-0 z-50 border-b-[1px] border-b-blue-200">
+    <div className="w-full h-20   bg-[#e9f1fe] border-b-[1px] ">
       <nav className="h-full px-4 max-w-container mx-auto relative">
         <Flex className="flex items-center justify-between h-full">
-          <Link to="/">
-            <div>
-                <span className="text-2xl font-bold text-white]">Executive MarketPlace</span>
-            </div>
-          </Link>
+                  <div
+                    onClick={() => setShow(!show)}
+                    ref={ref}
+                    className="flex h-14 cursor-pointer items-center gap-2 text-primeColor"
+                  >
+                    <HiOutlineMenuAlt4 className="w-5 h-5" />
+                    <p className="text-[14px] font-normal">Shop by Amazing</p>
+        
+                    {show && (
+                      <motion.ul
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute top-36 z-50 bg-primeColor w-auto text-[#767676] h-auto p-4 pb-6"
+                      >
+                        <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                          Accessories
+                        </li>
+                        <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                          Furniture
+                        </li>
+                        <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                          Electronics
+                        </li>
+                        <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                          Clothes
+                        </li>
+                        <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                          Bags
+                        </li>
+                        <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                          Home appliances
+                        </li>
+                      </motion.ul>
+                    )}
+                  </div>
           
           <div>
             {showMenu && (
@@ -79,7 +114,7 @@ const Header = () => {
                     <ul className="text-black flex flex-col gap-2">
                       {navBarList.map((item) => (
                         <li
-                          className="font-normal hover:font-bold items-center text-lg text-black hover:underline underline-offset-[4px] decoration-[1px] hover:text-white md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
+                          className="font-normal hover:font-bold items-center text-lg text-black hover:underline underline-offset-[4px] decoration-[1px] hover:text-blue md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0"
                           key={item._id}
                         >
                           <NavLink

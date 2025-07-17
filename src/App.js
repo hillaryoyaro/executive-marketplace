@@ -26,8 +26,8 @@ import Shop from "./pages/Shop/Shop";
 const Layout = () => {
   return (
     <div>
-      <Header />
       <HeaderBottom />
+      <Header />
       <SpecialCase />
       <ScrollRestoration />
       <Outlet />
