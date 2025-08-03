@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { logo, logoLight } from "../../../assets/images";
+import { logo, executivesLogo } from "../../../assets/images";
 import Image from "../../designLayouts/Image";
 import { FaSearch, FaUser, FaCaretDown, FaShoppingCart } from "react-icons/fa";
 import Flex from "../../designLayouts/Flex";
@@ -45,8 +45,8 @@ const HeaderBottom = () => {
         <Flex className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full px-4 pb-4 lg:pb-0 h-full lg:h-24">
           <Link to="/">
             <div>
-               <Image className="w-20 object-cover" imgSrc={logo} />
-              <span className="text-2xl font-bold text-white]">Executives MarketPlace</span>
+               <Image className="w-20  object-cover bg-white p-2 rounded-full" imgSrc={executivesLogo} />
+              
             </div>
           </Link>
 
